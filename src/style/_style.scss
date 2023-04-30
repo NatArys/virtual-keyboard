@@ -27,26 +27,45 @@ body {
 .input-wrapper {
   background: $bg-color;
   color: $text-color;
-  margin: 1rem auto;
-  padding: 2rem;
-  width: 60%;
+  margin: 1rem auto 0;
+  padding: 1rem;
+  width: 900px;
+  border-radius: 2rem;
+  background-color: $bg-board;
+  @include shadow($color: $sh-board, $size-x: 0.4rem);
 
   .input-field {
     padding: 1rem;
     font-size: 2.0rem;
-    border-radius: 0.3rem;
+    border-radius: 1rem;
     width: 100%;
+    height: 30vh;
+    resize: vertical;
+    border: 1px solid #ffffff;
+    background-color: #f3f3f3;
+    box-shadow:
+      inset -0.1rem 0.1rem 0.9rem $sh-board;
+
+    &:focus-visible {
+      outline: none;
+    }
   }
 
 }
 
+.info {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  font-size: 1rem;
+}
 
 
 
 .keyboard__wrapper {
   background: $bg-color;
   color: $text-color;
-  margin: 5rem auto;
+  margin: 1rem auto;
   padding: 1rem;
   width: 900px;
 
@@ -68,9 +87,6 @@ body {
   gap: 0.3rem;
 }
 
-// .keyboard__line:first-child{
-//   padding: 0 20px;
-// }
 .keyboard__line:last-child {
   padding: 0 42px 0 0;
 }
@@ -98,14 +114,12 @@ body {
 }
 
 .key2 {
-  // border: 1px solid $sh-key2;
   background-color: $bg-key2;
   @include shadow($sh-key2);
   font-size: 1rem;
 }
 
 .key3 {
-  // border: 1px solid $sh-key3;
   background-color: $bg-key3;
   @include shadow($sh-key3);
 }
@@ -119,22 +133,20 @@ body {
   width: 300px;
 }
 
-.key--lang {
-  // width: 63px;
-  // width: 2rem;
-  // height: 2rem;
+.lang {
+
+  width: 2rem;
+  height: 2rem;
 }
 
 .press,
 .key:hover {
-  // background-color:  mix($bg-key3,#797979,50%);
-  // border: 1px solid #ccc;
+
   background-color: rgb(221 221 221);
   box-shadow:
     inset 0.1rem -0.1rem 0.9rem rgba(247, 247, 247, 0.863),
     0 0 0.1rem 1px rgba(255, 255, 255, 0.5),
     0.2rem 0.2rem 0.2rem $sh-key3;
-  //  1rem 1rem 1rem #797979;
 }
 
 
