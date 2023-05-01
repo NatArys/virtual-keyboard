@@ -19,11 +19,14 @@ $sh-board: rgb(143, 173, 132, 0.7);
 
 
 @mixin shadow ($color, $size-x: 0.3rem, $size-y: $size-x) {
-  // box-shadow: $size-x $size-y 0 $color;
   box-shadow:
     inset -0.1rem 0.1rem 0.9rem $color,
     0 0 0.1rem 1px rgba(255, 255, 255, 0.5),
+    $size-x $size-y 0.1rem 1px $color;
+}
+@mixin shadow-hover ($color, $size-x: 0.3rem, $size-y: $size-x) {
+  box-shadow:
+    inset -0.1rem 0.1rem 1.3rem $color,
+    0 0 0.1rem 1px rgba(255, 255, 255, 0.5),
     $size-x $size-y 0.1rem $color;
 }
-
-

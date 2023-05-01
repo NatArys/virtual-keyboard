@@ -14,21 +14,11 @@ body {
   font-size: $font-size;
 }
 
-
-.ref-info {
-  background: $bg-color;
-  color: $text-color;
-  margin: 1rem auto;
-  height: 100px;
-  width: 60%;
-}
-
-
 .input-wrapper {
   background: $bg-color;
   color: $text-color;
   margin: 1rem auto 0;
-  padding: 1rem;
+  padding: 1rem 1rem 0 1rem;
   width: 900px;
   border-radius: 2rem;
   background-color: $bg-board;
@@ -53,11 +43,33 @@ body {
 
 }
 
+
 .info {
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
+  gap: 1rem;
+  padding: 0.5rem;
   font-size: 1rem;
+  color: $sh-board;
+}
+
+.title {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-size: 2rem;
+  flex-grow: 1;
+}
+
+.info-name {
+  padding: 0 1rem;
+  font-size: 0.8rem;
+  text-align: right;
+  color: $sh-board;
+
+  a {
+    color: $sh-board;
+  }
 }
 
 
@@ -134,19 +146,24 @@ body {
 }
 
 .lang {
-
   width: 2rem;
   height: 2rem;
 }
 
-.press,
-.key:hover {
 
-  background-color: rgb(221 221 221);
-  box-shadow:
-    inset 0.1rem -0.1rem 0.9rem rgba(247, 247, 247, 0.863),
-    0 0 0.1rem 1px rgba(255, 255, 255, 0.5),
-    0.2rem 0.2rem 0.2rem $sh-key3;
+.key1.press,
+.key1:hover {
+  @include shadow-hover($sh-key1, 0.1rem, 0.1rem);
+}
+
+.key2.press,
+.key2:hover {
+  @include shadow-hover($sh-key2, 0.1rem, 0.1rem);
+}
+
+.key3.press,
+.key3:hover {
+  @include shadow-hover($sh-key3, 0.1rem, 0.1rem);
 }
 
 
