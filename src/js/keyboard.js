@@ -13,6 +13,14 @@ class Keyboard {
 
 
   generateKeyboard() {
+
+    if (localStorage.getItem('lang')) {
+      this.lang = localStorage.getItem('lang');
+    } else {
+      localStorage.setItem('lang', this.lang);
+    }
+
+
     const keyboard = createNewNode('section', '', 'keyboard');
     const keyBox = createNewNode('div', '', 'keyboard__wrapper');
 
@@ -22,12 +30,16 @@ class Keyboard {
 
       keyData[i].forEach((e) => {
         const keyLabel = (e.key.ru && e.key.en) ? e.key[this.lang] : e.key;
-        const key = createNewNode('div', keyLabel, 'key', 'key1');
+        const key = createNewNode('div', keyLabel, 'key');
 
         key.dataset.code = e.code;
         key.dataset.type = e.type;
 
-        if (e.class) key.classList.add(...e.class);
+        if (e.class) { 
+          key.classList.add(...e.class); 
+        } else { 
+          key.classList.add('key1'); 
+        }
 
         if (e.key.ru && e.key.en) {
           key.dataset.ru = e.key.ru;

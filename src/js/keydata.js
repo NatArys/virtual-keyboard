@@ -63,10 +63,10 @@ const keyData = [
     { key: 'Shift', code: 'ShiftRight', type: 'func', class: ['key--long','key2','shift-right'] },
   ],
   [
-    { key: { ru: '🇷🇺', en: '🇺🇸' }, code: 'Lang', type: 'func', class: ['key--lang','key1'] },
+    { key: { ru: '🇷🇺', en: '🇺🇸' }, code: 'Lang', type: 'func', class: ['lang','key1'] },
     { key: 'Ctrl', code: 'ControlLeft', type: 'func', class: ['key--long','key2'] },
     { key: 'Alt', code: 'AltLeft', type: 'func', class: ['key--long','key2'] },
-    { key: ' ', code: 'Space', type: 'char', class: ['key--space'] },
+    { key: ' ', code: 'Space', type: 'char', class: ['key--space', 'key1'] },
     { key: 'Alt', code: 'AltRight', type: 'func', class: ['key--long','key2'] },
     { key: 'Ctrl', code: 'ControlRight', type: 'func', class: ['key--long','key2'] },
     { key: '◄', code: 'ArrowLeft', type: 'func', class: ['key3'] },
