@@ -8,9 +8,11 @@ const body = document.querySelector('body');
 
 const keyboard = new Keyboard();
 
-const infoText=createNewNode('div','','info');
-const changeLangText=createNewNode('div', 'Переключение языка комбинация: левые Shift + Alt', 'lang-text');
-const os=createNewNode('div', 'OS WIndows', 'os-text');
+const infoText = createNewNode('div', '', 'info');
+const changeLangText = createNewNode('div', 'Переключение языка комбинация: левые Shift + Alt', 'lang-text');
+const os = createNewNode('div', 'OS WIndows', 'os-text');
+const titleText = createNewNode('h1', 'Virtual Keyboard', 'title');
+const infoName = createNewNode('div', 'made by <a href="https://github.com/NatArys">NatArys</a>', 'info-name');
 
 const textWrap = createNewNode('section', '', 'input-wrapper');
 const inputField = createNewNode('textarea', '', 'input-field');
@@ -22,15 +24,17 @@ window.onload = () => {
 
   body.append(textWrap);
 
+  infoText.append(titleText);
   infoText.append(changeLangText);
   infoText.append(os);
 
   textWrap.append(infoText);
   textWrap.append(inputField);
-
-
+  textWrap.append(infoName);
 
   body.append(keyboard.generateKeyboard());
+
+
 
   // real keyboard
   // нажать
@@ -87,6 +91,7 @@ const pressKey = (event, btn, code) => {
   // символы
   if (btn.dataset.type === 'char' || btn.dataset.type === 'num') {
     str = btn.textContent;
+    if (code === 'Tab') str = '    ';
     keyboard.changeShift(event);
     inputField.value += str;
   }
@@ -139,7 +144,7 @@ const pressKey = (event, btn, code) => {
       if (caret > 0) inputField.setSelectionRange(caret - 1, caret - 1);
     }
     if (code === 'Delete') {
-      let str = inputField.value.substring(0, caret) + inputField.value.substring(caret+1, inputField.value.length);
+      let str = inputField.value.substring(0, caret) + inputField.value.substring(caret + 1, inputField.value.length);
       inputField.value = str;
       inputField.setSelectionRange(caret, caret);
     }
