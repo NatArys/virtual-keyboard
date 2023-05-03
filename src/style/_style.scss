@@ -118,6 +118,8 @@ body {
   border-radius: 1.5rem;
   color: $key-color;
   transition: all .1s;
+  cursor: pointer;
+  user-select:none;
 }
 
 .key1 {
