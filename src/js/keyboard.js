@@ -1,31 +1,24 @@
-import keyData from './keydata.js';
-import { createNewNode } from './createnode.js';
+import keyData from './keydata';
+import createNewNode from './createnode';
 
 class Keyboard {
-
-
   constructor() {
     this.lang = 'en';
     this.caps = false;
     this.shift = false;
   }
 
-
-
   generateKeyboard() {
-
     if (localStorage.getItem('lang')) {
       this.lang = localStorage.getItem('lang');
     } else {
       localStorage.setItem('lang', this.lang);
     }
 
-
     const keyboard = createNewNode('section', '', 'keyboard');
     const keyBox = createNewNode('div', '', 'keyboard__wrapper');
 
-    for (let i = 0; i < keyData.length; i++) {
-
+    for (let i = 0; i < keyData.length; i += 1) {
       const line = createNewNode('div', '', 'keyboard__line');
 
       keyData[i].forEach((e) => {
@@ -35,10 +28,10 @@ class Keyboard {
         key.dataset.code = e.code;
         key.dataset.type = e.type;
 
-        if (e.class) { 
-          key.classList.add(...e.class); 
-        } else { 
-          key.classList.add('key1'); 
+        if (e.class) {
+          key.classList.add(...e.class);
+        } else {
+          key.classList.add('key1');
         }
 
         if (e.key.ru && e.key.en) {
@@ -51,10 +44,7 @@ class Keyboard {
           key.dataset.enShift = e.shift.en;
         }
 
-
-
         line.append(key);
-
       });
       keyBox.append(line);
     }
@@ -63,25 +53,22 @@ class Keyboard {
   }
 
   replaceKeyVal(e) {
-    const lang = this.lang;
+    const langK = this.lang;
     const keysArr = document.querySelectorAll('.key');
 
     if (e.shiftKey || this.shift) {
       keysArr.forEach((item) => {
-        if (item.dataset[`${lang}Shift`]) {
-          // caps?
-          item.innerHTML = this.caps ? item.dataset[`${lang}Shift`].toLowerCase() : item.dataset[`${lang}Shift`];
-
-        } else if (item.dataset[lang]) item.innerHTML = item.dataset[lang];
+        if (item.dataset[`${langK}Shift`]) {
+          /* eslint-disable no-param-reassign */
+          item.innerHTML = this.caps ? item.dataset[`${langK}Shift`].toLowerCase() : item.dataset[`${langK}Shift`];
+        } else if (item.dataset[langK]) item.innerHTML = item.dataset[langK];
       });
-    }
-
-    else {
+    } else {
       keysArr.forEach((item) => {
-        if (item.dataset[lang]) {
+        if (item.dataset[langK]) {
           if (this.caps && !(e.shiftKey || this.shift)) {
-            item.innerHTML = item.dataset[lang].toUpperCase();
-          } else item.innerHTML = item.dataset[lang];
+            item.innerHTML = item.dataset[langK].toUpperCase();
+          } else item.innerHTML = item.dataset[langK];
         }
       });
     }
@@ -89,7 +76,6 @@ class Keyboard {
 
   changeShift(e) {
     if (this.shift) {
-      console.log('this.shift', this.shift);
       this.shift = !this.shift;
       document.querySelector('.shift-left').classList.remove('press');
       document.querySelector('.shift-right').classList.remove('press');
@@ -101,7 +87,9 @@ class Keyboard {
   changeCaps(e) {
     this.caps = !this.caps;
     const keyCaps = document.querySelector('.caps');
-    this.caps ? keyCaps.classList.add('press') : keyCaps.classList.remove('press');
+    if (this.caps) {
+      keyCaps.classList.add('press');
+    } else keyCaps.classList.remove('press');
     this.replaceKeyVal(e);
   }
 
@@ -111,7 +99,6 @@ class Keyboard {
 
     this.replaceKeyVal(e);
   }
-
 }
 
 export default Keyboard;
